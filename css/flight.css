@@ -1,0 +1,36 @@
+/* import fonts from fonts.css file */
+@import url(./fonts.css);
+@import url(./partials/_variables.css);
+@import url(./partials/_global.css);
+
+/* ================== navigation ================== */
+.header .main-menu .navbar .navbar-brand{
+    padding: 0 2rem 0 5rem; 
+    /* up right down left */
+}
+
+.header .main-menu .navbar{
+    padding: 1rem 20rem;
+}
+
+.header .main-menu .nav-item .nav-link{
+    font: normal 500 15px/2px var(--hind);
+    text-transform: uppercase;
+    padding: 1.7rem;
+    color: var(--title-color);
+}
+
+.header .main-menu .navbar-nav .active a{
+    background: var(--gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header .main-menu .navbar-nav a:hover{
+    background: var(--gradient-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* ================== navigation ================== */
