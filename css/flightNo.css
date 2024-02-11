@@ -37,13 +37,36 @@
 
 
 /* ================== date selection ================== */
+.text-box{
+    width: 80%;
+    color: var(--title-color);
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1{
+    font-size: 40px;
+    padding: 3.7rem;
+}
+
 input[type="month"] {
     background-color: #c6e2ee;
     padding: 15px;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    
+    font: var(--hind);
+    color: var(--title-color), monospace;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
 }
+::-webkit-calendar-picker-indicator{
+    padding: 5px;
+    cursor: pointer;
+}
+
 /* ================== date selection ================== */
