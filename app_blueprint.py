@@ -1,24 +1,72 @@
-import requests
 import os
-import psycopg2
 from dotenv import load_dotenv
 from amadeus import Client, ResponseError, Location
-from flask import Flask, render_template
-from flask_cors import CORS
-#apis: [flightdates, flightofferssearch, flightdelay,pointsofinterest, airportontime]
-#maybe apis: [flightorders, flightorder, ]
-#conn = psycopg2.connect("dbname=? user=? password=?")
-
-app = Flask(__name__,template_folder="Templates")
+from flask import Blueprint, render_template
+import psycopg2
+import threading
+import requests
 
 load_dotenv()
 amadeus = Client(client_id=os.getenv('API_KEY'), client_secret=os.getenv('API_SECRET'))
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+try:
+    # Connect to the PostgreSQL server
+    connection = psycopg2.connect(
+        host=os.getenv('host'),
+        port=os.getenv('port'),
+        database=os.getenv('database'),
+        user=os.getenv('user'),
+        password=os.getenv('password')
+    )
+    
+    # Create a cursor object using the connection
+    cursor = connection.cursor()
+    
+    # Define SQL queries
+    summer_query = "SELECT * FROM summertravel;"
+    winter_query = "SELECT * FROM wintertravel;"
+    
+    # Execute the summer query
+    cursor.execute(summer_query)
+    
+    # Fetch and process results for summer travel
+    summer_rows = cursor.fetchall()
+    
+    # Execute the winter query
+    cursor.execute(winter_query)
+    
+    # Fetch and process results for winter travel
+    winter_rows = cursor.fetchall()
+    
+    # Close the cursor and connection
+    cursor.close()
+    
+except psycopg2.Error as e:
+    print("Error: Could not connect to PostgreSQL database:", e)
 
-@app.route('/orig/<start_point>/<end_point>/<dep_date>/<adult_count>')
+app_blueprint = Blueprint('app_blueprint',__name__)
+
+@app_blueprint.route('/')
+def index():
+    return render_template("index.html")
+
+@app_blueprint.route('/about')
+def about():
+    return render_template("about.html")
+
+@app_blueprint.route('/flight')
+def flight():
+    return render_template("flight.html")
+
+@app_blueprint.route('/flightNo')
+def flightNo():
+    return render_template("flightNo.html")
+
+@app_blueprint.route('/flightYes')
+def flightYes():
+    return render_template("flightYes.html")
+
+@app_blueprint.route('/orig/<start_point>/<end_point>/<dep_date>/<adult_count>', methods=['GET'])
 def find_cheapest_on_specific_date(start_point, end_point, dep_date, adult_count):
     try:
         response = amadeus.shopping.flight_offers_search.get(
@@ -49,14 +97,6 @@ def late_params(response):
     #delays = delay_percentage(orig_loc,dest_loc,dept_date,dept_time,arv_date,arv_time,ac,cc,num,loc)
     return ((orig_loc, dest_loc, dept_date, dept_time, arv_date, arv_time, ac, cc, num))
 
-""" @app.route('/flightdate/<org>/<dest>')
-def flight_get_dates(org, dest):
-    try:
-        response = amadeus.shopping.flight_dates.get(origin=org, destination=dest)
-    except ResponseError as error:
-        return error
-    return response.result """
-
 def running_threads(json):
     delays = []
     for i in range(len(json)):
@@ -74,8 +114,8 @@ destinationLocationCode=dest_loc, departureDate=dept_date, departureTime=dept_ti
     thread = threading.Thread(target=running_threads, args=(response.result,))
     thread.start()
     thread.join() """
-
-@app.route('/ontime/<ac>/<date>')
+    
+@app_blueprint.route('/ontime/<ac>/<date>')
 def on_time_percentage(ac, date):
     try:
         response = amadeus.airport.predictions.on_time.get(airportCode=ac, date=date)
@@ -88,3 +128,5 @@ cheap_resp_res = find_cheapest_on_specific_date('MAD','BOS','2024-11-01','1')
 otp_resp_res = on_time_percentage('JFK','2024-09-01')
 on_time = otp_resp_res['data']['probability']
 print(on_time)
+    
+
