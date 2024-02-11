@@ -49,9 +49,13 @@ text-align: center;
 
 .question-block{
     padding: 20px;
-    margin: 15px 10px;
+    margin: 30px 10px;
     background-color: #c6e2ee;
     border-radius: 10px;
+}
+
+.question-block.button{
+    padding: 2px;
 }
 
 #questionsContainer:hover{
@@ -73,7 +77,7 @@ display: block;
 }
 
 .selected{
-    background-color:blue;
+    background-color:#ffb3e2;
 }
   
 
@@ -95,8 +99,8 @@ display: block;
 
 input[type="month"] {
     background-color: #c6e2ee;
-    padding: 15px;
-    position: absolute;
+    padding: 1rem 1.2rem;
+    position: relative;
     transform: translate(-50%, -50%);
     font: var(--hind);
     color: var(--title-color), monospace;
@@ -104,10 +108,19 @@ input[type="month"] {
     border: none;
     outline: none;
     border-radius: 5px;
+    vertical-align: bottom;
+    margin: -1.9rem -5rem;
+    margin-left: 80px;
 }
 ::-webkit-calendar-picker-indicator{
     padding: 5px;
     cursor: pointer;
+}
+
+.question-block{
+    button{
+        margin-left: 10px;
+    }
 }
 
 /* ================== date selection ================== */

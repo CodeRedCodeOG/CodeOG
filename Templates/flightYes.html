@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Title</title>
+
+    <!-- Bootstrap css file -->
+    <link rel="stylesheet" href="../static/styles/bootstrap.min.css">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="../static/styles/all.min.css">
+    <!-- custom css file -->
+    <link rel="stylesheet" href="../static/styles/flightYes.css">
+</head>
+<body>
+    
+    <!-- ================== Header ================== -->
+    <header class="header">
+      <div class="main-menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <img src="../static/img/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="container-fluid"></div>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="about.html">about</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="flight.html">flight</a>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </header>
+    <!-- ================== Header ================== -->
+
+    <!-- ================== Select ================== -->
+    <div class="select">
+        <div class="text-box">
+            <h1>Input your flight details:</h1>
+            <p>Choose your travel dates and place:</p>
+            <select id="stateSelect" name="stateSelect">
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Calafornia">Calafornia</option>
+                <option value="Florida">Florida</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="New York">New York</option>
+                <option value="Texas">Texas</option>
+            </select>
+            <select id="stateSelect" name="stateSelect">
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Calafornia">Calafornia</option>
+                <option value="Florida">Florida</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="New York">New York</option>
+                <option value="Texas">Texas</option>
+            </select>
+            <input type="date" id="startDate" name="startDate">
+            <input type="date" id="endDate" name="endDate">
+            <button type="button" class="btn button primary-button mr-4 text-uppercase" onclick="showQuestions(); submitDate();">Submit</button>
+        </div>
+    </div>
+
+    <!-- ================== Select ================== -->
+
+    <!-- Jquery js file -->
+    <script src="../js/jquery.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="../js/bootstrap.min.js"></script>
+
+</body>
+</html>
