@@ -71,6 +71,10 @@ display: none;
 .select.active #questionsContainer {
 display: block;
 }
+
+.selected{
+    background-color:blue;
+}
   
 
 /* ================== date selection ================== */
