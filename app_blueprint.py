@@ -50,6 +50,10 @@ app_blueprint = Blueprint('app_blueprint',__name__)
 def index():
     return render_template("index.html")
 
+@app_blueprint.route('/index')
+def index_click():
+    return render_template("index.html")
+
 @app_blueprint.route('/about')
 def about():
     return render_template("about.html")
