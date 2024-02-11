@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Title</title>
+
+    <!-- Bootstrap css file -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <!-- custom css file -->
+    <link rel="stylesheet" href="./css/flightNo.css">
+  </head>
+
+  <body>
+    <!-- ================== Header ================== -->
+    <header class="header">
+      <div class="main-menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="./img/logo.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="container-fluid"></div>
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">about</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="flight.html">flight</a>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- ================== Header ================== -->
+
+
+    <!-- ================== date selection ================== -->
+    <div class="select">
+      <div class="text-box">
+        <h1>Select month and year to travel:</h1>
+        <input type="month" id="datepicker" name="datepicker">
+        <button type="button" class="btn button primary-button mr-4 text-uppercase" onclick="showQuestions(); submitDate();">Submit</button>
+
+      </div>
+      <div id="questionsContainer"></div>
+    </div>
+    <!-- ================== date selection ================== -->
+
+
+    <!-- ================== Script ================== -->
+    <script>
+      function submitDate() {
+        // Retrieve the selected date from the input
+        var selectedDate = document.getElementById("datepicker").value;
+        
+        // You can perform further actions with the selectedDate here, such as sending it to the server or processing it in JavaScript.
+        console.log("Selected date:", selectedDate);
+      }
+    </script>
+
+    <script>
+    function showQuestions() {
+      var selectedDate = document.getElementById("datepicker").value;
+      var questionsArray = [
+        "City size:",
+        "Activity:",
+        "Budget:",
+        "Climate:",
+        "Safety:",
+        "Popularity:",
+        "Transprotation:"
+      ];
+
+      var questionsContainer = document.getElementById("questionsContainer");
+
+      // Clear previous questions (if any)
+      questionsContainer.innerHTML = "";
+
+      // Create a new div for each question
+      questionsArray.forEach(function (question, index) {
+        var questionDiv = document.createElement("div");
+        questionDiv.className = "question-block";
+
+        // Create a paragraph for the question
+        var questionParagraph = document.createElement("p");
+        questionParagraph.innerHTML = question;
+        questionDiv.appendChild(questionParagraph);
+
+        // Create two buttons with options
+        var buttonA = createOptionButton("Option A", index, "A");
+        var buttonB = createOptionButton("Option B", index, "B");
+
+        questionDiv.appendChild(buttonA);
+        questionDiv.appendChild(buttonB);
+
+        // Append the question div to the questionsContainer
+        questionsContainer.appendChild(questionDiv);
+      });
+    }
+    </script>
+
+    <script>
+    function createOptionButton(label, questionIndex, option) {
+      var button = document.createElement("button");
+      button.innerHTML = label;
+
+      button.addEventListener("click", function () {
+        var isSelected = button.classList.contains("selected");
+
+        if (!isSelected) {
+          // Button is selected
+          button.classList.add("selected");
+          sendMessageToBackend("Selected", questionIndex, option);
+        } else {
+          // Button is unselected
+          button.classList.remove("selected");
+          sendMessageToBackend("Unselected", questionIndex, option);
+        }
+      });
+
+      return button;
+    }
+    </script>
+
+    <script>
+    function sendMessageToBackend(action, questionIndex, option) {
+      // Replace this with your actual code to send messages to the backend
+      console.log(`Action: ${action}, Question Index: ${questionIndex}, Option: ${option}`);
+    }
+    </script>
+
+    <!-- ================== Script ================== -->
+
+  </body>
+</html>

@@ -11,7 +11,7 @@
 }
 
 .header .main-menu .navbar{
-    padding: 1rem 20rem;
+    padding: 1rem;
 }
 
 .header .main-menu .nav-item .nav-link{
@@ -37,6 +37,12 @@
 /* ================== navigation ================== */
 
 /* ================== banner ================== */
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 .site-main .site-banner{
     background: url(../img/banner/home-banner.png) no-repeat 0% 50%;
     /* horizontal vertical */
