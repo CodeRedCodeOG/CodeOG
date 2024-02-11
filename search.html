@@ -10,10 +10,10 @@
     <!-- font awesome icons -->
     <link rel="stylesheet" href="./css/all.min.css">
     <!-- custom css file -->
-    <link rel="stylesheet" href="./css/flight.css">
+    <link rel="stylesheet" href="./css/search.css">
 </head>
 <body>
-    
+
     <!-- ================== Header ================== -->
     <header class="header">
         <div class="main-menu">
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="#">about</a>
                       </li>
                       <li class="nav-item active">
-                        <a class="nav-link" href="#">flight</a>
+                        <a class="nav-link" href="flight.html">flight</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">4444</a>
@@ -55,38 +55,14 @@
     </header>
     <!-- ================== Header ================== -->
 
-    <!-- ================== Select ================== -->
-    <div class="select">
-        <div class="text-box">
-            <h1>Do you know your destination?</h1>
-            <div class="button-container">
-                <button type="button" class="btn button primary-button mr-4 text-uppercase" id="knowButton">I know</button>
-                <button type="button" class="btn button primary-button text-uppercase" id="dontKnowButton">I don't know</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- ================== Select ================== -->
+    <!-- ================== date selection ================== -->
+    
+    <label for="datepicker">Select Month and Year:</label>
+    <input type="month" id="datepicker" name="datepicker">
+    
+    <!-- ================== date selection ================== -->
 
-    <script>
-        // Get the button element by its ID
-        var knowButton = document.getElementById('knowButton');
-        var dontKnowButton = document.getElementById('dontKnowButton');
-        // Add a click event listener
-        knowButton.addEventListener('click', function() {
-            // Redirect to another HTML page
-            window.location.href = 'destination.html';
-        });
-        dontKnowButton.addEventListener('click', function() {
-            // Redirect to another HTML page
-            window.location.href = 'search.html';
-        });
-    </script>
-
-    <!-- Jquery js file -->
-    <script src="./js/jquery.js"></script>
-    <!-- Bootstrap js file -->
-    <script src="./js/bootstrap.min.js"></script>
 
 </body>
 </html>

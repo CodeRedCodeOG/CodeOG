@@ -1,5 +1,6 @@
 .title-text{
     font: normal bold 52px/72px var(--hind);
+    color: var(--title-color);
 }
 
 .text-uppercase{
@@ -15,7 +16,7 @@
     border-radius: 4px;
 }
 
-.button.primary-button{
+.button.primary-button{ 
     background: var(--gradient-color);
     color: whitesmoke;
     transition: background .6s ease;
