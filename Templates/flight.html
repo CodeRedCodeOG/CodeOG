@@ -6,47 +6,36 @@
     <title>Tab Title</title>
 
     <!-- Bootstrap css file -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- font awesome icons -->
-    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="../css/all.min.css">
     <!-- custom css file -->
-    <link rel="stylesheet" href="./css/flight.css">
+    <link rel="stylesheet" href="../css/flight.css">
 </head>
 <body>
     
     <!-- ================== Header ================== -->
     <header class="header">
-        <div class="main-menu">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="index.html"><img src="./img/logo.png" alt="logo"></a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="container-fluid"></div>
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">about</a>
-                      </li>
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#">flight</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">4444</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">5555</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">6666</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">contack</a>
-                      </li>
+      <div class="main-menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <img src="../img/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="container-fluid"></div>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="about.html">about</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="flight.html">flight</a>
                     </ul>
                   </div>
                 </div>
@@ -60,8 +49,8 @@
         <div class="text-box">
             <h1>Do you know your destination?</h1>
             <div class="button-container">
-                <button type="button" class="btn button primary-button mr-4 text-uppercase" id="knowButton">I know</button>
-                <button type="button" class="btn button primary-button text-uppercase" id="dontKnowButton">I don't know</button>
+                <button type="button" class="btn button primary-button mr-4 text-uppercase" id="Yes">Yes</button>
+                <button type="button" class="btn button primary-button text-uppercase" id="No">No</button>
             </div>
         </div>
     </div>
@@ -70,23 +59,23 @@
 
     <script>
         // Get the button element by its ID
-        var knowButton = document.getElementById('knowButton');
-        var dontKnowButton = document.getElementById('dontKnowButton');
+        var Yes = document.getElementById('Yes');
+        var No = document.getElementById('No');
         // Add a click event listener
-        knowButton.addEventListener('click', function() {
+        Yes.addEventListener('click', function() {
             // Redirect to another HTML page
-            window.location.href = 'destination.html';
+            window.location.href = 'flightYes.html';
         });
-        dontKnowButton.addEventListener('click', function() {
+        No.addEventListener('click', function() {
             // Redirect to another HTML page
-            window.location.href = 'search.html';
+            window.location.href = 'flightNo.html';
         });
     </script>
 
     <!-- Jquery js file -->
-    <script src="./js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
     <!-- Bootstrap js file -->
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>
