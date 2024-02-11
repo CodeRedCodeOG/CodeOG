@@ -69,76 +69,73 @@
       }
     </script>
 
-    <script>
-    function showQuestions() {
-      var selectedDate = document.getElementById("datepicker").value;
-      var questionsArray = [
-        "City size:",
-        "Activity:",
-        "Budget:",
-        "Climate:",
-        "Safety:",
-        "Popularity:",
-        "Transprotation:"
-      ];
+<script>
+  function showQuestions() {
+    var selectedDate = document.getElementById("datepicker").value;
+    var questionsArray = [
+      { question: "City size:", options: ["small town", "big metropolis"] },
+      { question: "Activity:", options: ["relax", "explore"] },
+      { question: "Budget:", options: ["friendly", "luxury"] },
+      { question: "Climate:", options: ["summer", "winter"] },
+      { question: "Safety:", options: ["low crime", "stable"] },
+      { question: "Popularity:", options: ["tourist attractions", "unpopular area"] },
+      { question: "Transportation:", options: ["public", "self-driving"] }
+    ];
 
-      var questionsContainer = document.getElementById("questionsContainer");
+    var questionsContainer = document.getElementById("questionsContainer");
 
-      // Clear previous questions (if any)
-      questionsContainer.innerHTML = "";
+    // Clear previous questions (if any)
+    questionsContainer.innerHTML = "";
 
-      // Create a new div for each question
-      questionsArray.forEach(function (question, index) {
-        var questionDiv = document.createElement("div");
-        questionDiv.className = "question-block";
+    // Create a new div for each question
+    questionsArray.forEach(function (item, index) {
+      var questionDiv = document.createElement("div");
+      questionDiv.className = "question-block";
 
-        // Create a paragraph for the question
-        var questionParagraph = document.createElement("p");
-        questionParagraph.innerHTML = question;
-        questionDiv.appendChild(questionParagraph);
+      // Create a paragraph for the question
+      var questionParagraph = document.createElement("p");
+      questionParagraph.innerHTML = item.question;
+      questionDiv.appendChild(questionParagraph);
 
-        // Create two buttons with options
-        var buttonA = createOptionButton("Option A", index, "A");
-        var buttonB = createOptionButton("Option B", index, "B");
+      // Create two buttons with options
+      var buttonA = createOptionButton(item.options[0], item, index, "A");
+      var buttonB = createOptionButton(item.options[1], item, index, "B");
 
-        questionDiv.appendChild(buttonA);
-        questionDiv.appendChild(buttonB);
+      questionDiv.appendChild(buttonA);
+      questionDiv.appendChild(buttonB);
 
-        // Append the question div to the questionsContainer
-        questionsContainer.appendChild(questionDiv);
-      });
-    }
-    </script>
+      // Append the question div to the questionsContainer
+      questionsContainer.appendChild(questionDiv);
+    });
+  }
 
-    <script>
-    function createOptionButton(label, questionIndex, option) {
-      var button = document.createElement("button");
-      button.innerHTML = label;
+  function createOptionButton(label, questionItem, index, option) {
+    var button = document.createElement("button");
+    button.innerHTML = label;
 
-      button.addEventListener("click", function () {
-        var isSelected = button.classList.contains("selected");
+    button.addEventListener("click", function () {
+      var isSelected = button.classList.contains("selected");
 
-        if (!isSelected) {
-          // Button is selected
-          button.classList.add("selected");
-          sendMessageToBackend("Selected", questionIndex, option);
-        } else {
-          // Button is unselected
-          button.classList.remove("selected");
-          sendMessageToBackend("Unselected", questionIndex, option);
-        }
-      });
+      if (!isSelected) {
+        // Button is selected
+        button.classList.add("selected");
+        sendMessageToBackend("Selected", questionItem.question, questionItem.options, option);
+      } else {
+        // Button is unselected
+        button.classList.remove("selected");
+        sendMessageToBackend("Unselected", questionItem.question, questionItem.options, option);
+      }
+    });
 
-      return button;
-    }
-    </script>
+    return button;
+  }
 
-    <script>
-    function sendMessageToBackend(action, questionIndex, option) {
-      // Replace this with your actual code to send messages to the backend
-      console.log(`Action: ${action}, Question Index: ${questionIndex}, Option: ${option}`);
-    }
-    </script>
+  function sendMessageToBackend(action, question, options, option) {
+    // Replace this with your actual code to send messages to the backend
+    console.log(`Action: ${action}, Question: ${question}, Selected Option: ${options[option === "A" ? 0 : 1]}`);
+  }
+</script>
+
 
     <!-- ================== Script ================== -->
 
